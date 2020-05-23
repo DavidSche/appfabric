@@ -61,6 +61,7 @@ span.brand-name.ng-binding {
 }
 [cam-widget-footer] {
 	color: white;
+	color: #52b415;
 	background-color: ${CUSTOM_COLOR_LINES};
 }
 
@@ -68,5 +69,5 @@ span.brand-name.ng-binding {
 	color: white;
 }
 [cam-widget-footer] a:hover, [cam-widget-footer] a:focus {
-    color: black;
+    color: #000000;
 }
