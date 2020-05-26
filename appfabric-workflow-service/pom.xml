@@ -77,7 +77,7 @@
   <dependencies>
     <dependency>
       <groupId>com.david.appfabric</groupId>
-      <artifactId>workflow-customized-webjar</artifactId>
+      <artifactId>customized-workflow-webjar</artifactId>
       <version>${camunda.version}</version>
       <!--
       <artifactId>springboot-customized-webapp-webjar-ee</artifactId>
