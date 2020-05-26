@@ -1,16 +1,43 @@
-spring.datasource:
-  url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-#  url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE
-#spring.datasource.url: jdbc:h2:file:./camunda-h2-database
-#shareable h2 database: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
-  username: sa
-  password: sa
-spring.h2.console.enabled: true
-camunda.bpm:
-  admin-user:
-    id: demo
-    password: demo
-    firstName: Demo
-  filter:
-    create: All tasks
+#spring.datasource:
+#  url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+##  url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE
+##spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+##shareable h2 database: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+#  username: sa
+#  password: sa
+#spring.h2.console.enabled: true
+# camunda-workflow:setting
+camunda:
+  datasource:
+#    driverClassName: org.postgresql.Driver
+    url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+    configuration.maximum-pool-size: 30
+  bpm:
+    admin-user:
+      id: demo
+      password: demo
+      firstName: Demo
+    filter:
+      create: All tasks
+# Spring-data-jap:setting
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      hbm2ddl.auto: create
+    show-sql: true
+    generate-ddl: true
+
+# port
 server.port: 8080
+#application
+#
+domain:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.9.26:3306/demo?createDatabaseIfNotExist=true&useSSL=false
+    username: root
+    password: root
+    configuration.maximum-pool-size: 30
