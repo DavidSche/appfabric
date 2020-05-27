@@ -17,7 +17,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration()
 @EnableTransactionManagement
 // @formatter:off
-@EnableJpaRepositories(basePackages = "org.camunda.demo.multipleDatasources.repository", 
+@EnableJpaRepositories(basePackages = "com.davidche.workflow.demo.repository",
 					   entityManagerFactoryRef = "domainEntityManagerFactory", 
 					   transactionManagerRef = "domainTransactionManager")
 // @formatter:on
@@ -40,7 +40,7 @@ public class DomainDataSourceConfiguration {
 		// @formatter:off
 		return builder
 				.dataSource(domainDataSource())
-				.packages("org.camunda.demo.multipleDatasources.entity")
+				.packages("com.davidche.workflow.demo.entity")
 				.persistenceUnit("domainEntityManager")
 				.build();
 		// @formatter:on
