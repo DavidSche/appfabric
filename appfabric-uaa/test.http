@@ -1,0 +1,72 @@
+GET http://localhost:80/api/item?id=99
+Accept: application/json
+
+###
+### 注册
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "che_shuai@massclouds.com",
+  "password": "123456",
+  "registerAsAdmin": "true"
+}
+
+### 登录
+
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "che_shuai@massclouds.com",
+  "password": "123456",
+  "deviceInfo": {
+    "deviceId": "htc",
+    "deviceType": "DEVICE_TYPE_ANDROID"
+
+  }
+}
+
+###  registrationConfirmation
+GET {{host}}/api/auth/registrationConfirmation?token=97808f69-1edc-4b30-83e5-942ad49ffb80
+
+###
+{
+  "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTkwNjM1NDI1LCJleHAiOjE1OTA2MzYzMjV9.wV1jmrkaGE8eSqAXDMYRI29TXFWaSxeDGxgt5KerVGBDKfYLOuproUsvX7BAjf6ZP_h3wOGxgLuvCvYdKxedUg",
+  "refreshToken": "6fdb4aee-c961-483e-8dee-488e417ff991",
+}
+
+
+### 测试接口
+GET {{host}}/api/security/test
+Accept: application/json
+Cookie: JSESSIONID=C2E7D6491E6A9CCD57BFCC7F57493536
+
+###
+create table "utr_db"."t_send_msg"
+   (	"send_msg_id" varchar2(32) not null enable,
+	"create_time" varchar2(30),
+	"modify_time" varchar2(30),
+	"sendmsg1" varchar2(256),
+	"sendmsg2" varchar2(256),
+	"msg_title" varchar2(500),
+	"msg_content" varchar2(3000),
+	"msg_type" varchar2(50),
+	"msg_pass_num" varchar2(5),
+	"from_user_name" varchar2(100),
+	"from_user_mobile" varchar2(50),
+	"from_user_email" varchar2(100),
+	"user_pass" varchar2(50),
+	"mail_host" varchar2(100),
+	"mail_protocol" varchar2(20),
+	"to_user_name" varchar2(200),
+	"to_user_mobile" varchar2(20),
+	"to_user_email" varchar2(100),
+	"msg_create_time" varchar2(30),
+	"msg_send_time" varchar2(30),
+	"msg_status" varchar2(2),
+	"sys_ename" varchar2(50),
+	"sendmsg3" varchar2(256),
+	"msg_level" varchar2(3),
+	"msg_template" varchar2(100)
+   )
