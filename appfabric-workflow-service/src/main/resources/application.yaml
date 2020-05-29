@@ -13,7 +13,7 @@ camunda:
     url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password: sa
-    configuration.maximum-pool-size: 30
+
   bpm:
     admin-user:
       id: demo
