@@ -1,3 +1,10 @@
+
+
+###
+GET http://localhost:80/api/item?id=99
+Accept: application/json
+
+###
 GET http://localhost:80/api/item?id=99
 Accept: application/json
 
@@ -19,7 +26,7 @@ Content-Type: application/json
 
 {
   "email": "che_shuai@massclouds.com",
-  "password": "123456",
+  "password": "111111",
   "deviceInfo": {
     "deviceId": "htc",
     "deviceType": "DEVICE_TYPE_ANDROID"
@@ -27,13 +34,37 @@ Content-Type: application/json
   }
 }
 
-###  registrationConfirmation
-GET {{host}}/api/auth/registrationConfirmation?token=97808f69-1edc-4b30-83e5-942ad49ffb80
+###  registrationConfirmation  注册确认
+GET {{host}}/api/auth/registrationConfirmation?token=899cd142-f204-4046-9005-138bf63f1d2a
+
+### 使用令牌登录成功
+GET {{host}}/api/user/me
+Authorization: Bearer  eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTkwNzQxNjUwLCJleHAiOjE1OTA3NDI1NTB9.85-RUYUA9EJXSGDoBPqNUQaTm21_u9Tg8V41ceJSYFqMjI-437g93zfrN0fChtIPVnivHpHB6xPxoZyXFbivZw
 
 ###
+POST {{host}}/api/auth/password/resetlink
+Content-Type: application/json
+
 {
-  "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTkwNjM1NDI1LCJleHAiOjE1OTA2MzYzMjV9.wV1jmrkaGE8eSqAXDMYRI29TXFWaSxeDGxgt5KerVGBDKfYLOuproUsvX7BAjf6ZP_h3wOGxgLuvCvYdKxedUg",
-  "refreshToken": "6fdb4aee-c961-483e-8dee-488e417ff991",
+  "email": "che_shuai@massclouds.com"
+}
+
+###
+POST {{host}}/api/auth/password/reset
+Content-Type: application/json
+
+{
+"password":"111111",
+"confirmPassword":"111111",
+"token": "74afd7f7-2772-422c-93b1-8ffbe82fc721"
+}
+
+### 刷新当前用户的token
+POST {{host}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "ff2a1198-181e-430e-ba8b-b21ec55b25c9"
 }
 
 
@@ -41,32 +72,6 @@ GET {{host}}/api/auth/registrationConfirmation?token=97808f69-1edc-4b30-83e5-942
 GET {{host}}/api/security/test
 Accept: application/json
 Cookie: JSESSIONID=C2E7D6491E6A9CCD57BFCC7F57493536
+token=3D74afd7f7-2772-422c-93=b1-8ffbe82fc721"
 
 ###
-create table "utr_db"."t_send_msg"
-   (	"send_msg_id" varchar2(32) not null enable,
-	"create_time" varchar2(30),
-	"modify_time" varchar2(30),
-	"sendmsg1" varchar2(256),
-	"sendmsg2" varchar2(256),
-	"msg_title" varchar2(500),
-	"msg_content" varchar2(3000),
-	"msg_type" varchar2(50),
-	"msg_pass_num" varchar2(5),
-	"from_user_name" varchar2(100),
-	"from_user_mobile" varchar2(50),
-	"from_user_email" varchar2(100),
-	"user_pass" varchar2(50),
-	"mail_host" varchar2(100),
-	"mail_protocol" varchar2(20),
-	"to_user_name" varchar2(200),
-	"to_user_mobile" varchar2(20),
-	"to_user_email" varchar2(100),
-	"msg_create_time" varchar2(30),
-	"msg_send_time" varchar2(30),
-	"msg_status" varchar2(2),
-	"sys_ename" varchar2(50),
-	"sendmsg3" varchar2(256),
-	"msg_level" varchar2(3),
-	"msg_template" varchar2(100)
-   )

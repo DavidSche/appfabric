@@ -108,38 +108,44 @@ Moreover, entities are validated using JSR-303 Validation constraints.
 
 1. **Registering a user**
 ---
-![image](https://user-images.githubusercontent.com/12872673/44460909-841c0200-a62c-11e8-96b6-996b8de6b2b8.png)
+![image](./44460909-841c0200-a62c-11e8-96b6-996b8de6b2b8.png)
 
 
 2. **Logging in a valid user**
 ---
+![image](./45047478-c155aa80-b096-11e8-96e8-d7872a92ee03.png)
+
+-----
+
 ![image](https://user-images.githubusercontent.com/12872673/45047478-c155aa80-b096-11e8-96e8-d7872a92ee03.png)
 
 3. **Logging in an invalid user**
 ---
-![image](https://user-images.githubusercontent.com/12872673/44461046-03a9d100-a62d-11e8-8073-fb6b32cec3de.png)
+![image](./44461046-03a9d100-a62d-11e8-8073-fb6b32cec3de.png)
 
 3. **Using the token in request header & accessing resource**
 ---
-![image](https://user-images.githubusercontent.com/12872673/44461090-2e942500-a62d-11e8-8f05-8ecd1d2828e3.png)
+Authorization
+
+![image](./44461090-2e942500-a62d-11e8-8f05-8ecd1d2828e3.png)
 
 4. **Accessing admin resource with invalid permissions/token**
 ---
-![image](https://user-images.githubusercontent.com/12872673/44461159-68fdc200-a62d-11e8-9a8c-95a9c84d52cd.png)
+![image](./44461159-68fdc200-a62d-11e8-9a8c-95a9c84d52cd.png)
 
 5. **Logging out the user device**
 ---
-![image](https://user-images.githubusercontent.com/12872673/45047550-f3ffa300-b096-11e8-8520-3eae03b6ef78.png)
+![image](./45047550-f3ffa300-b096-11e8-8520-3eae03b6ef78.png)
 
 6. **Resetting the password**
 ---
-![image](https://user-images.githubusercontent.com/12872673/45047624-3628e480-b097-11e8-944f-c88b1cd0c231.png)
+![image](./45047624-3628e480-b097-11e8-944f-c88b1cd0c231.png)
 
 7. **Refreshing the authentication token**
 ---
-![image](https://user-images.githubusercontent.com/12872673/45047676-5bb5ee00-b097-11e8-84d4-2dbbe1489157.png)
+![image]./45047676-5bb5ee00-b097-11e8-84d4-2dbbe1489157.png)
 
 8. **Confirming the user email verification token**
 ---
-![image](https://user-images.githubusercontent.com/12872673/45047715-76886280-b097-11e8-9ea6-e0c649eb6cbd.png)
+![image](./45047715-76886280-b097-11e8-9ea6-e0c649eb6cbd.png)
 
