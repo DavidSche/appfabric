@@ -96,6 +96,11 @@ Moreover, entities are validated using JSR-303 Validation constraints.
 
 	Any new user who signs up to the app is assigned the `ROLE_USER` by default.
 
+6. ** API DOC**
+
+   http://localhost:9004/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/
+   
+
 ---
 
 ### Contribution ###
