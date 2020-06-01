@@ -6,7 +6,7 @@ import com.davidche.appfabric.uaa.model.PasswordResetToken;
 import com.davidche.appfabric.uaa.model.User;
 import com.davidche.appfabric.uaa.service.MailService;
 import freemarker.template.TemplateException;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.Async;
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 import javax.mail.MessagingException;
 import java.io.IOException;
 
+@Slf4j
 @Component
 public class OnGenerateResetLinkEventListener implements ApplicationListener<OnGenerateResetLinkEvent> {
 
-    private static final Logger logger = Logger.getLogger(OnGenerateResetLinkEventListener.class);
     private final MailService mailService;
 
     @Autowired
@@ -48,7 +48,7 @@ public class OnGenerateResetLinkEventListener implements ApplicationListener<OnG
         try {
             mailService.sendResetLink(emailConfirmationUrl, recipientAddress);
         } catch (IOException | TemplateException | MessagingException e) {
-            logger.error(e);
+            log.error(e.getMessage());
             throw new MailSendException(recipientAddress, "Email Verification");
         }
     }

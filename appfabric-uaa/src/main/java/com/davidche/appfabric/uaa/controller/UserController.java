@@ -9,10 +9,13 @@ import com.davidche.appfabric.uaa.model.payload.LogOutRequest;
 import com.davidche.appfabric.uaa.model.payload.UpdatePasswordRequest;
 import com.davidche.appfabric.uaa.service.AuthService;
 import com.davidche.appfabric.uaa.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import org.apache.log4j.Logger;
+//import io.swagger.annotations.Api;
+//import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
@@ -27,11 +30,9 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/user")
-@Api(value = "User Rest API", description = "Defines endpoints for the logged in user. It's secured by default")
-
+@Tag(name  = "User Rest API", description = "Defines endpoints for the logged in user. It's secured by default")
+@Slf4j
 public class UserController {
-
-    private static final Logger logger = Logger.getLogger(UserController.class);
 
     private final AuthService authService;
 
@@ -51,9 +52,9 @@ public class UserController {
      */
     @GetMapping("/me")
     @PreAuthorize("hasRole('USER')")
-    @ApiOperation(value = "Returns the current user profile")
+    @Operation(summary  = "Returns the current user profile")
     public ResponseEntity getUserProfile(@CurrentUser CustomUserDetails currentUser) {
-        logger.info(currentUser.getEmail() + " has role: " + currentUser.getRoles());
+        log.info(currentUser.getEmail() + " has role: " + currentUser.getRoles());
         return ResponseEntity.ok("Hello. This is about me");
     }
 
@@ -62,9 +63,9 @@ public class UserController {
      */
     @GetMapping("/admins")
     @PreAuthorize("hasRole('ADMIN')")
-    @ApiOperation(value = "Returns the list of configured admins. Requires ADMIN Access")
+    @Operation(summary  = "Returns the list of configured admins. Requires ADMIN Access")
     public ResponseEntity getAllAdmins() {
-        logger.info("Inside secured resource with admin");
+        log.info("Inside secured resource with admin");
         return ResponseEntity.ok("Hello. This is about admins");
     }
 
@@ -73,10 +74,10 @@ public class UserController {
      */
     @PostMapping("/password/update")
     @PreAuthorize("hasRole('USER')")
-    @ApiOperation(value = "Allows the user to change his password once logged in by supplying the correct current " +
+    @Operation(summary  = "Allows the user to change his password once logged in by supplying the correct current " +
             "password")
     public ResponseEntity updateUserPassword(@CurrentUser CustomUserDetails customUserDetails,
-                                             @ApiParam(value = "The UpdatePasswordRequest payload") @Valid @RequestBody UpdatePasswordRequest updatePasswordRequest) {
+                                             @Parameter(description = "The UpdatePasswordRequest payload") @Valid @RequestBody UpdatePasswordRequest updatePasswordRequest) {
 
         return authService.updatePassword(customUserDetails, updatePasswordRequest)
                 .map(updatedUser -> {
@@ -92,9 +93,9 @@ public class UserController {
      * user device.
      */
     @PostMapping("/logout")
-    @ApiOperation(value = "Logs the specified user device and clears the refresh tokens associated with it")
+    @Operation(summary  = "Logs the specified user device and clears the refresh tokens associated with it")
     public ResponseEntity logoutUser(@CurrentUser CustomUserDetails customUserDetails,
-                                     @ApiParam(value = "The LogOutRequest payload") @Valid @RequestBody LogOutRequest logOutRequest) {
+                                     @Parameter(description = "The LogOutRequest payload") @Valid @RequestBody LogOutRequest logOutRequest) {
         userService.logoutUser(customUserDetails, logOutRequest);
         return ResponseEntity.ok(new ApiResponse(true, "Log out successful"));
     }

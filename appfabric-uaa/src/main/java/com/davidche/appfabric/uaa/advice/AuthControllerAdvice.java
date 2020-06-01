@@ -14,7 +14,7 @@ import com.davidche.appfabric.uaa.exception.UserLoginException;
 import com.davidche.appfabric.uaa.exception.UserLogoutException;
 import com.davidche.appfabric.uaa.exception.UserRegistrationException;
 import com.davidche.appfabric.uaa.model.payload.ApiResponse;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -35,10 +35,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestControllerAdvice
 public class AuthControllerAdvice {
-
-    private static final Logger logger = Logger.getLogger(AuthControllerAdvice.class);
 
     private final MessageSource messageSource;
 
@@ -78,7 +77,7 @@ public class AuthControllerAdvice {
     private String resolveLocalizedErrorMessage(ObjectError objectError) {
         Locale currentLocale = LocaleContextHolder.getLocale();
         String localizedErrorMessage = messageSource.getMessage(objectError, currentLocale);
-        logger.info(localizedErrorMessage);
+        log.info(localizedErrorMessage);
         return localizedErrorMessage;
     }
 

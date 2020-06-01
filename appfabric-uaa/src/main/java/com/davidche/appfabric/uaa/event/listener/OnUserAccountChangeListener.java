@@ -5,7 +5,7 @@ import com.davidche.appfabric.uaa.exception.MailSendException;
 import com.davidche.appfabric.uaa.model.User;
 import com.davidche.appfabric.uaa.service.MailService;
 import freemarker.template.TemplateException;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.Async;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 import javax.mail.MessagingException;
 import java.io.IOException;
 
+@Slf4j
 @Component
 public class OnUserAccountChangeListener implements ApplicationListener<OnUserAccountChangeEvent> {
 
-    private static final Logger logger = Logger.getLogger(OnUserAccountChangeListener.class);
     private final MailService mailService;
 
     @Autowired
@@ -47,7 +47,7 @@ public class OnUserAccountChangeListener implements ApplicationListener<OnUserAc
         try {
             mailService.sendAccountChangeEmail(action, actionStatus, recipientAddress);
         } catch (IOException | TemplateException | MessagingException e) {
-            logger.error(e);
+            log.error(e.getMessage(),e.fillInStackTrace());
             throw new MailSendException(recipientAddress, "Account Change Mail");
         }
     }

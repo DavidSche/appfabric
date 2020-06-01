@@ -1,7 +1,7 @@
 package com.davidche.appfabric.uaa.security;
 
 import com.davidche.appfabric.uaa.service.CustomUserDetailsService;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,10 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+@Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private static final Logger log = Logger.getLogger(JwtAuthenticationFilter.class);
     @Value("${app.jwt.header}")
     private String tokenRequestHeader;
     @Value("${app.jwt.header.prefix}")
