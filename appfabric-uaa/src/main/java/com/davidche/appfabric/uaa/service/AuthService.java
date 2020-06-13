@@ -5,6 +5,7 @@ import com.davidche.appfabric.uaa.exception.ResourceAlreadyInUseException;
 import com.davidche.appfabric.uaa.exception.ResourceNotFoundException;
 import com.davidche.appfabric.uaa.exception.TokenRefreshException;
 import com.davidche.appfabric.uaa.exception.UpdatePasswordException;
+import com.davidche.appfabric.uaa.i18n.LocaleMessage;
 import com.davidche.appfabric.uaa.model.CustomUserDetails;
 import com.davidche.appfabric.uaa.model.PasswordResetToken;
 import com.davidche.appfabric.uaa.model.User;
@@ -21,6 +22,7 @@ import com.davidche.appfabric.uaa.security.JwtTokenProvider;
 import lombok.extern.slf4j.Slf4j;
 //import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -42,6 +44,8 @@ public class AuthService {
     private final EmailVerificationTokenService emailVerificationTokenService;
     private final UserDeviceService userDeviceService;
     private final PasswordResetTokenService passwordResetTokenService;
+    @Autowired
+    private LocaleMessage localeMessage;
 
     @Autowired
     public AuthService(UserService userService, JwtTokenProvider tokenProvider, RefreshTokenService refreshTokenService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, EmailVerificationTokenService emailVerificationTokenService, UserDeviceService userDeviceService, PasswordResetTokenService passwordResetTokenService) {
@@ -109,6 +113,9 @@ public class AuthService {
         User registeredUser = emailVerificationToken.getUser();
         if (registeredUser.getEmailVerified()) {
             log.info("User [" + emailToken + "] already registered.");
+            log.info(localeMessage.getMessage("USER_REGISTERED"),emailToken );
+            //String welcome = messageSource.getMessage("welcome",null,locale);
+
             return Optional.of(registeredUser);
         }
 

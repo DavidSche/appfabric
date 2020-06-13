@@ -34,6 +34,11 @@ public class User extends DateAudit {
     @NotBlank(message = "User email cannot be null")
     private String email;
 
+    @NaturalId
+    @Column(name = "PHONE", unique = true)
+    @NotBlank(message = "User phone cannot be null")
+    private String phone;
+
     @Column(name = "USERNAME", unique = true)
     @NullOrNotBlank(message = "Username can not be blank")
     private String username;
@@ -142,6 +147,14 @@ public class User extends DateAudit {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Boolean getActive() {

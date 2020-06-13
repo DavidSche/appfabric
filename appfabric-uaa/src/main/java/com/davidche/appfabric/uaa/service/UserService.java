@@ -19,6 +19,10 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * 用户账号登录等账号操作的业务实现类
+ *
+ */
 @Slf4j
 @Service
 public class UserService {
@@ -52,7 +56,12 @@ public class UserService {
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-
+    /**
+     * Finds a user in the database by phone
+     */
+    public Optional<User> findByPhone(String phone) {
+        return userRepository.findByPhone(phone);
+    }
     /**
      * Find a user in db by id.
      */
@@ -107,7 +116,7 @@ public class UserService {
         if (!isToBeMadeAdmin) {
             newUserRoles.removeIf(Role::isAdminRole);
         }
-        log.info("Setting user roles: " + newUserRoles);
+        log.info("Setting user roles: {}", newUserRoles);
         return newUserRoles;
     }
 
@@ -121,7 +130,7 @@ public class UserService {
                 .filter(device -> device.getDeviceId().equals(deviceId))
                 .orElseThrow(() -> new UserLogoutException(logOutRequest.getDeviceInfo().getDeviceId(), "Invalid device Id supplied. No matching device found for the given user "));
 
-        log.info("Removing refresh token associated with device [" + userDevice + "]");
+        log.info("Removing refresh token associated with device [{}]",userDevice);
         refreshTokenService.deleteById(userDevice.getRefreshToken().getId());
     }
 }

@@ -154,3 +154,8 @@ Authorization
 ---
 ![image](./45047715-76886280-b097-11e8-9ea6-e0c649eb6cbd.png)
 
+---
+其他参考
+
+[其他参考](https://github.com/ywbjja/springSecurity-jwt-vue-temple)
+
