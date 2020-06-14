@@ -1,9 +1,11 @@
 package com.davidche.appfabric.uaa.model.payload;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+@Data
 @Schema(name = "Update password Request", description = "The update password request payload")
 public class UpdatePasswordRequest {
 
@@ -15,27 +17,4 @@ public class UpdatePasswordRequest {
     @Schema(name = "Valid new password string", required = true, allowableValues = "NonEmpty String")
     private String newPassword;
 
-    public UpdatePasswordRequest(String oldPassword, String newPassword) {
-        this.oldPassword = oldPassword;
-        this.newPassword = newPassword;
-    }
-
-    public UpdatePasswordRequest() {
-    }
-
-    public String getOldPassword() {
-        return oldPassword;
-    }
-
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
-    }
-
-    public String getNewPassword() {
-        return newPassword;
-    }
-
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
 }

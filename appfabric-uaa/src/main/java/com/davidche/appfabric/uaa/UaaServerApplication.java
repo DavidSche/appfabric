@@ -8,13 +8,13 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 @SpringBootApplication
 @EntityScan(basePackageClasses = {
-        AuthAppApplication.class,
+        UaaServerApplication.class,
         Jsr310JpaConverters.class
 })
-public class AuthAppApplication {
+public class UaaServerApplication {
 //cvicse_32
     public static void main(String[] args) {
-        SpringApplication.run(AuthAppApplication.class, args);
+        SpringApplication.run(UaaServerApplication.class, args);
     }
 
 }

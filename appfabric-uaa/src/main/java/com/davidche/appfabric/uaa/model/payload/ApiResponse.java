@@ -1,9 +1,11 @@
 package com.davidche.appfabric.uaa.model.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
 
 import java.time.Instant;
 
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse {
 
@@ -29,23 +31,4 @@ public class ApiResponse {
         this.path = null;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public Boolean getSuccess() {
-        return success;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public String getCause() {
-        return cause;
-    }
-
-    public String getPath() {
-        return path;
-    }
 }

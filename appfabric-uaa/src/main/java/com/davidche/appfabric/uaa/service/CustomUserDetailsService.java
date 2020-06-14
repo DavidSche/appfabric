@@ -1,5 +1,6 @@
 package com.davidche.appfabric.uaa.service;
 
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.CustomUserDetails;
 import com.davidche.appfabric.uaa.model.User;
 import com.davidche.appfabric.uaa.repository.UserRepository;
@@ -20,6 +21,7 @@ import java.util.Optional;
  */
 @Slf4j
 @Service
+@MyLoggable
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;

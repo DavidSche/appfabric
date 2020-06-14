@@ -3,9 +3,11 @@ package com.davidche.appfabric.uaa.model.payload;
 import com.davidche.appfabric.uaa.validation.annotation.NullOrNotBlank;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
+@Data
 @Schema(name = "Registration Request", description = "The registration request payload")
 public class RegistrationRequest {
 
@@ -16,6 +18,10 @@ public class RegistrationRequest {
     @NullOrNotBlank(message = "Registration email can be null but not blank")
     @Schema(name ="A valid email", required = true, allowableValues = "NonEmpty String")
     private String email;
+
+    @NullOrNotBlank(message = "Registration phone can be null but not blank")
+    @Schema(name ="A valid phone", required = true, allowableValues = "NonEmpty String")
+    private String phone;
 
     @NotNull(message = "Registration password cannot be null")
     @Schema(name ="A valid password string", required = true, allowableValues = "NonEmpty String")
@@ -37,35 +43,4 @@ public class RegistrationRequest {
     public RegistrationRequest() {
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Boolean getRegisterAsAdmin() {
-        return registerAsAdmin;
-    }
-
-    public void setRegisterAsAdmin(Boolean registerAsAdmin) {
-        this.registerAsAdmin = registerAsAdmin;
-    }
 }

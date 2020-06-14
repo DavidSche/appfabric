@@ -1,5 +1,6 @@
 package com.davidche.appfabric.uaa.service;
 
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.Mail;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
+@MyLoggable
 @Service
 public class MailService {
 
@@ -81,6 +83,7 @@ public class MailService {
      * Send an email to the user indicating an account change event with the correct
      * status
      */
+    @MyLoggable
     public void sendAccountChangeEmail(String action, String actionStatus, String to)
             throws IOException, TemplateException, MessagingException {
         Mail mail = new Mail();
@@ -101,6 +104,7 @@ public class MailService {
     /**
      * Sends a simple mail as a MIME Multipart message
      */
+    @MyLoggable
     public void send(Mail mail) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,

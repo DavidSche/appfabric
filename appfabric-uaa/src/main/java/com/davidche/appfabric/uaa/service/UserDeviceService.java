@@ -1,6 +1,7 @@
 package com.davidche.appfabric.uaa.service;
 
 import com.davidche.appfabric.uaa.exception.TokenRefreshException;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.UserDevice;
 import com.davidche.appfabric.uaa.model.payload.DeviceInfo;
 import com.davidche.appfabric.uaa.model.token.RefreshToken;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@MyLoggable
 public class UserDeviceService {
 
     private final UserDeviceRepository userDeviceRepository;

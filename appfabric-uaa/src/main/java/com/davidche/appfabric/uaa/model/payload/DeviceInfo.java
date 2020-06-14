@@ -3,10 +3,12 @@ package com.davidche.appfabric.uaa.model.payload;
 import com.davidche.appfabric.uaa.model.DeviceType;
 import com.davidche.appfabric.uaa.validation.annotation.NullOrNotBlank;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Data
 public class DeviceInfo {
 
     @NotBlank(message = "Device id cannot be blank")
@@ -31,27 +33,4 @@ public class DeviceInfo {
         notificationToken = notificationToken;
     }
 
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public DeviceType getDeviceType() {
-        return deviceType;
-    }
-
-    public void setDeviceType(DeviceType deviceType) {
-        this.deviceType = deviceType;
-    }
-
-    public String getNotificationToken() {
-        return notificationToken;
-    }
-
-    public void setNotificationToken(String notificationToken) {
-        this.notificationToken = notificationToken;
-    }
 }

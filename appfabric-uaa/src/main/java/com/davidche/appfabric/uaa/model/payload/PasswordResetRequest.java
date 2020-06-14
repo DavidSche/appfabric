@@ -3,9 +3,11 @@ package com.davidche.appfabric.uaa.model.payload;
 import com.davidche.appfabric.uaa.validation.annotation.MatchPassword;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+@Data
 @MatchPassword
 @Schema(name = "Password reset Request", description = "The password reset request payload")
 public class PasswordResetRequest {
@@ -32,27 +34,4 @@ public class PasswordResetRequest {
         this.token = token;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 }

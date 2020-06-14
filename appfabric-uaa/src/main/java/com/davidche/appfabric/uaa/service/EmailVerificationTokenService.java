@@ -1,6 +1,7 @@
 package com.davidche.appfabric.uaa.service;
 
 import com.davidche.appfabric.uaa.exception.InvalidTokenRequestException;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.TokenStatus;
 import com.davidche.appfabric.uaa.model.User;
 import com.davidche.appfabric.uaa.model.token.EmailVerificationToken;
@@ -16,6 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 @Slf4j
 @Service
+@MyLoggable
 public class EmailVerificationTokenService {
 
 //    private static final Logger logger = Logger.getLogger(EmailVerificationTokenService.class);

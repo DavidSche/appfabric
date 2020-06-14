@@ -5,6 +5,7 @@ import com.davidche.appfabric.uaa.event.OnRegenerateEmailVerificationEvent;
 import com.davidche.appfabric.uaa.event.OnUserAccountChangeEvent;
 import com.davidche.appfabric.uaa.event.OnUserRegistrationCompleteEvent;
 import com.davidche.appfabric.uaa.exception.*;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.CustomUserDetails;
 import com.davidche.appfabric.uaa.model.payload.*;
 import com.davidche.appfabric.uaa.model.token.EmailVerificationToken;
@@ -27,6 +28,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 //import io.swagger.annotations.Api;
 //import io.swagger.annotations.ApiOperation;
@@ -37,6 +39,7 @@ import java.util.Optional;
 @RequestMapping("/api/auth")
 @Tag(name  = "Authorization Rest API", description = "Defines endpoints that can be hit only when the user is not logged in. It's not secured by default.")
 @Slf4j
+@MyLoggable(warnOver = 5, warnUnit = TimeUnit.SECONDS)
 public class AuthController {
 
 //    private static final Logger logger = Logger.getLogger(AuthController.class);
@@ -57,6 +60,7 @@ public class AuthController {
     /**
      * Checks is a given email is in use or not.
      */
+    @MyLoggable
     @Operation(summary  = "Checks if the given email is in use")
     @GetMapping("/checkEmailInUse")
     public ResponseEntity checkEmailInUse(@Parameter(description = "Email id to check against") @RequestParam("email") String email) {
@@ -67,6 +71,7 @@ public class AuthController {
     /**
      * Checks is a given username is in use or not.
      */
+    @MyLoggable
     @Operation(summary  = "Checks if the given username is in use")
     @GetMapping("/checkUsernameInUse")
     public ResponseEntity checkUsernameInUse(@Parameter(description = "Username to check against") @RequestParam(
@@ -79,6 +84,7 @@ public class AuthController {
     /**
      * Entry point for the user log in. Return the jwt auth token and the refresh token
      */
+    @MyLoggable
     @PostMapping("/login")
     @Operation(summary  = "Logs the user in to the system and return the auth tokens")
     public ResponseEntity authenticateUser(@Parameter(description = "The LoginRequest payload") @Valid @RequestBody LoginRequest loginRequest) {
@@ -103,6 +109,7 @@ public class AuthController {
      * Entry point for the user registration process. On successful registration,
      * publish an event to generate email verification token
      */
+    @MyLoggable
     @PostMapping("/register")
     @Operation(summary  = "Registers the user and publishes an event to generate the email verification")
     public ResponseEntity registerUser(@Parameter(description = "The RegistrationRequest payload") @Valid @RequestBody RegistrationRequest registrationRequest) {
@@ -123,6 +130,7 @@ public class AuthController {
      * the reset link if the request is valid. In future the deeplink should open within
      * the app itself.
      */
+    @MyLoggable
     @PostMapping("/password/resetlink")
     @Operation(summary  = "Receive the reset link request and publish event to send mail containing the password " +
             "reset link")
@@ -143,7 +151,7 @@ public class AuthController {
      * Receives a new passwordResetRequest and sends the acknowledgement after
      * changing the password to the user's mail through the event.
      */
-
+    @MyLoggable
     @PostMapping("/password/reset")
     @Operation(summary  = "Reset the password after verification and publish an event to send the acknowledgement " +
             "email")
@@ -163,6 +171,7 @@ public class AuthController {
      * Confirm the email verification token generated for the user during
      * registration. If token is invalid or token is expired, report error.
      */
+    @MyLoggable
     @GetMapping("/registrationConfirmation")
     @Operation(summary  = "Confirms the email verification token that has been generated for the user during registration")
     public ResponseEntity confirmRegistration(@Parameter(description = "the token that was sent to the user email") @RequestParam("token") String token) {

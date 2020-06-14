@@ -3,6 +3,7 @@ package com.davidche.appfabric.uaa.controller;
 import com.davidche.appfabric.uaa.annotation.CurrentUser;
 import com.davidche.appfabric.uaa.event.OnUserAccountChangeEvent;
 import com.davidche.appfabric.uaa.exception.UpdatePasswordException;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.CustomUserDetails;
 import com.davidche.appfabric.uaa.model.payload.ApiResponse;
 import com.davidche.appfabric.uaa.model.payload.LogOutRequest;
@@ -32,6 +33,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/user")
 @Tag(name  = "User Rest API", description = "Defines endpoints for the logged in user. It's secured by default")
 @Slf4j
+@MyLoggable
 public class UserController {
 
     private final AuthService authService;

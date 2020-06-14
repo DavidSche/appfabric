@@ -1,9 +1,11 @@
 package com.davidche.appfabric.uaa.model.payload;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+@Data
 @Schema(name = "Token refresh Request", description = "The jwt token refresh request payload")
 public class TokenRefreshRequest {
 
@@ -12,18 +14,4 @@ public class TokenRefreshRequest {
             allowableValues = "NonEmpty String")
     private String refreshToken;
 
-    public TokenRefreshRequest(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
-
-    public TokenRefreshRequest() {
-    }
-
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
 }

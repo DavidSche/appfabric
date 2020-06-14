@@ -90,6 +90,12 @@ public class UserService {
         return userRepository.existsByUsername(username);
     }
 
+    /**
+     * Check is the user exists given the email: naturalId
+     */
+    public Boolean existsByPhone(String phone) {
+        return userRepository.existsByPhone(phone);
+    }
 
     /**
      * Creates a new user from the registration request
@@ -99,6 +105,7 @@ public class UserService {
         Boolean isNewUserAsAdmin = registerRequest.getRegisterAsAdmin();
         newUser.setEmail(registerRequest.getEmail());
         newUser.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        newUser.setPhone(registerRequest.getPhone());
         newUser.setUsername(registerRequest.getEmail());
         newUser.addRoles(getRolesForNewUser(isNewUserAsAdmin));
         newUser.setActive(true);

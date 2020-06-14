@@ -3,10 +3,12 @@ package com.davidche.appfabric.uaa.model.payload;
 import com.davidche.appfabric.uaa.validation.annotation.NullOrNotBlank;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+@Data
 @Schema(name = "Login Request", description = "The login request payload")
 public class LoginRequest {
 
@@ -38,35 +40,4 @@ public class LoginRequest {
     public LoginRequest() {
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public DeviceInfo getDeviceInfo() {
-        return deviceInfo;
-    }
-
-    public void setDeviceInfo(DeviceInfo deviceInfo) {
-        this.deviceInfo = deviceInfo;
-    }
 }

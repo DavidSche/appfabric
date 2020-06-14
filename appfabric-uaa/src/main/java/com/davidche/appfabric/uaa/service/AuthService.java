@@ -6,6 +6,7 @@ import com.davidche.appfabric.uaa.exception.ResourceNotFoundException;
 import com.davidche.appfabric.uaa.exception.TokenRefreshException;
 import com.davidche.appfabric.uaa.exception.UpdatePasswordException;
 import com.davidche.appfabric.uaa.i18n.LocaleMessage;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.CustomUserDetails;
 import com.davidche.appfabric.uaa.model.PasswordResetToken;
 import com.davidche.appfabric.uaa.model.User;
@@ -22,7 +23,6 @@ import com.davidche.appfabric.uaa.security.JwtTokenProvider;
 import lombok.extern.slf4j.Slf4j;
 //import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,6 +33,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@MyLoggable
 public class AuthService {
 
 //    private static final Logger logger = Logger.getLogger(AuthService.class);
@@ -64,13 +65,19 @@ public class AuthService {
      *
      * @return A user object if successfully created
      */
+
     public Optional<User> registerUser(RegistrationRequest newRegistrationRequest) {
         String newRegistrationRequestEmail = newRegistrationRequest.getEmail();
+        String newRegistrationRequestPhone = newRegistrationRequest.getPhone();
         if (emailAlreadyExists(newRegistrationRequestEmail)) {
             log.error("Email already exists: " + newRegistrationRequestEmail);
-            throw new ResourceAlreadyInUseException("Email", "Address", newRegistrationRequestEmail);
+            throw new ResourceAlreadyInUseException("Email", "Email", newRegistrationRequestEmail);
         }
-        log.info("Trying to register new user [" + newRegistrationRequestEmail + "]");
+        if (phoneAlreadyExists(newRegistrationRequestPhone)) {
+            log.error("Phone already exists: " + newRegistrationRequestPhone);
+            throw new ResourceAlreadyInUseException("Phone", "Phone", newRegistrationRequestPhone);
+        }
+        log.info("Trying to register new user [{}]",newRegistrationRequestEmail );
         User newUser = userService.createUser(newRegistrationRequest);
         User registeredNewUser = userService.save(newUser);
         return Optional.ofNullable(registeredNewUser);
@@ -84,7 +91,14 @@ public class AuthService {
     public Boolean emailAlreadyExists(String email) {
         return userService.existsByEmail(email);
     }
-
+    /**
+     * Checks if the given email already exists in the database repository or not
+     *
+     * @return true if the email exists else false
+     */
+    public Boolean phoneAlreadyExists(String phone) {
+        return userService.existsByPhone(phone);
+    }
     /**
      * Checks if the given email already exists in the database repository or not
      *
