@@ -16,6 +16,7 @@ Content-Type: application/json
 {
   "email": "che_shuai@massclouds.com",
   "password": "123456",
+  "phone": "13066026666",
   "registerAsAdmin": "true"
 }
 
@@ -26,7 +27,7 @@ Content-Type: application/json
 
 {
   "email": "che_shuai@massclouds.com",
-  "password": "111111",
+  "password": "123456",
   "deviceInfo": {
     "deviceId": "htc",
     "deviceType": "DEVICE_TYPE_ANDROID"
@@ -35,7 +36,7 @@ Content-Type: application/json
 }
 
 ###  registrationConfirmation  注册确认
-GET {{host}}/api/auth/registrationConfirmation?token=899cd142-f204-4046-9005-138bf63f1d2a
+GET {{host}}/api/auth/registrationConfirmation?token=c2e506e2-f467-4b08-9d9f-119d2d11566e
 
 ### 使用令牌登录成功
 GET {{host}}/api/user/me

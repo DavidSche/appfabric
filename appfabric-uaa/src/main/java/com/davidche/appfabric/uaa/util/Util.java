@@ -17,4 +17,7 @@ public class Util {
     public static String generateRandomUuid() {
         return UUID.randomUUID().toString();
     }
+    public static String creatUUID(){
+        return UUID.randomUUID().toString().replace("-", "");
+    }
 }
