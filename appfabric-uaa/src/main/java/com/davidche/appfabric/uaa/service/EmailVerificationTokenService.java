@@ -15,9 +15,10 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
+
+@MyLoggable
 @Slf4j
 @Service
-@MyLoggable
 public class EmailVerificationTokenService {
 
 //    private static final Logger logger = Logger.getLogger(EmailVerificationTokenService.class);

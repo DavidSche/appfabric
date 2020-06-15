@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 @MyLoggable
+@Service
 public class UserDeviceService {
 
     private final UserDeviceRepository userDeviceRepository;

@@ -2,6 +2,7 @@ package com.davidche.appfabric.uaa.service;
 
 import com.davidche.appfabric.uaa.annotation.CurrentUser;
 import com.davidche.appfabric.uaa.exception.UserLogoutException;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.CustomUserDetails;
 import com.davidche.appfabric.uaa.model.Role;
 import com.davidche.appfabric.uaa.model.User;
@@ -23,11 +24,12 @@ import java.util.Set;
  * 用户账号登录等账号操作的业务实现类
  *
  */
+@MyLoggable
 @Slf4j
 @Service
 public class UserService {
 
-//    private static final Logger logger = Logger.getLogger(UserService.class);
+//
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final RoleService roleService;

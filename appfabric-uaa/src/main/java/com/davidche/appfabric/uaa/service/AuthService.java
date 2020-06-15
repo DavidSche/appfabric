@@ -31,9 +31,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@MyLoggable
 @Slf4j
 @Service
-@MyLoggable
 public class AuthService {
 
 //    private static final Logger logger = Logger.getLogger(AuthService.class);

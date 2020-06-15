@@ -19,9 +19,9 @@ import java.util.Optional;
  * 我们这里就一个加载用户信息的简单方法，
  * 就是得到当前登录用户的一些用户名、密码、用户所拥有的角色等等一些信息
  */
+@MyLoggable
 @Slf4j
 @Service
-@MyLoggable
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;

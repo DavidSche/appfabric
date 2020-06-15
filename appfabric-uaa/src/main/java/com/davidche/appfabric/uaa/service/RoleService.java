@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-@Service
 @MyLoggable
+@Service
 public class RoleService {
 
     private final RoleRepository roleRepository;

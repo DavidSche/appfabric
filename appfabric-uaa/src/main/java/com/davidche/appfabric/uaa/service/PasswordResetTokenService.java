@@ -1,6 +1,7 @@
 package com.davidche.appfabric.uaa.service;
 
 import com.davidche.appfabric.uaa.exception.InvalidTokenRequestException;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.PasswordResetToken;
 import com.davidche.appfabric.uaa.repository.PasswordResetTokenRepository;
 import com.davidche.appfabric.uaa.util.Util;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.Optional;
 
+@MyLoggable
 @Service
 public class PasswordResetTokenService {
 
