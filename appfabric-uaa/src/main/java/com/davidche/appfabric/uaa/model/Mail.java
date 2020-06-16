@@ -1,11 +1,14 @@
 package com.davidche.appfabric.uaa.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Data
+@Setter
+@Getter
 public class Mail {
     private String from;
     private String to;

@@ -4,11 +4,14 @@ import com.davidche.appfabric.uaa.validation.annotation.NullOrNotBlank;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@Data
+@Setter
+@Getter
 @Schema(name = "Login Request", description = "The login request payload")
 public class LoginRequest {
 

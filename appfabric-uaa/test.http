@@ -1,3 +1,15 @@
+POST http://localhost:9004//api/user/logout
+Content-Type: application/json
+
+{
+  "deviceInfo": {
+    "deviceId": "htc",
+    "deviceType": "DEVICE_TYPE_ANDROID"
+
+  }
+}
+
+###
 
 
 ###
@@ -27,6 +39,7 @@ Content-Type: application/json
 
 {
   "email": "che_shuai@massclouds.com",
+  "phone": "130666666666",
   "password": "123456",
   "deviceInfo": {
     "deviceId": "htc",
@@ -35,12 +48,14 @@ Content-Type: application/json
   }
 }
 
+> {% client.global.set("auth_token", response.body.accessToken); %}
+
 ###  registrationConfirmation  注册确认
 GET {{host}}/api/auth/registrationConfirmation?token=c2e506e2-f467-4b08-9d9f-119d2d11566e
 
 ### 使用令牌登录成功
 GET {{host}}/api/user/me
-Authorization: Bearer  eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTkwNzQxNjUwLCJleHAiOjE1OTA3NDI1NTB9.85-RUYUA9EJXSGDoBPqNUQaTm21_u9Tg8V41ceJSYFqMjI-437g93zfrN0fChtIPVnivHpHB6xPxoZyXFbivZw
+Authorization: Bearer {{auth_token}}
 
 ###
 POST {{host}}/api/auth/password/resetlink
@@ -57,17 +72,66 @@ Content-Type: application/json
 {
 "password":"111111",
 "confirmPassword":"111111",
-"token": "74afd7f7-2772-422c-93b1-8ffbe82fc721"
+"token": "14403768-ac72-4d64-956c-aab10d562f30"
 }
+
+### 重新登录
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "che_shuai@massclouds.com",
+  "phone": "13066026666",
+  "password": "123456",
+  "deviceInfo": {
+    "deviceId": "htc",
+    "deviceType": "DEVICE_TYPE_ANDROID",
+    "notificationToken": "ASDQWEZXC"
+
+  }
+}
+
+### 使用令牌登录成功
+GET {{host}}/api/user/me
+Authorization: Bearer  {{auth_token}}
+
+###
 
 ### 刷新当前用户的token
 POST {{host}}/api/auth/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "ff2a1198-181e-430e-ba8b-b21ec55b25c9"
+  "refreshToken": "abbcfac6-6410-4c47-bdf7-9dbb1d38687f"
 }
 
+### 刷新当前用户的token
+GET {{host}}/api/user/admins
+Authorization: Bearer  {{auth_token}}
+
+### update
+POST {{host}}/api/user/password/update
+Content-Type: application/json
+Authorization: Bearer  {{auth_token}}
+
+{
+    "oldPassword": "123456",
+    "newPassword": "654321"
+
+}
+
+### 登出
+POST {{host}}/api/user/logout
+Content-Type: application/json
+Authorization: Bearer  {{auth_token}}
+
+{
+  "deviceInfo": {
+    "deviceId": "htc",
+    "deviceType": "DEVICE_TYPE_ANDROID",
+    "notificationToken": "ASDQWEZXC"
+  }
+}
 
 ### 测试接口
 GET {{host}}/api/security/test

@@ -2,7 +2,8 @@ package com.davidche.appfabric.uaa.model;
 
 import com.davidche.appfabric.uaa.model.audit.DateAudit;
 import com.davidche.appfabric.uaa.validation.annotation.NullOrNotBlank;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,8 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @Entity(name = "USER")
 public class User extends DateAudit {
 
@@ -103,10 +105,9 @@ public class User extends DateAudit {
         setIsEmailVerified(true);
     }
 
-
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email='" + email + '\'' + ", username='" + username + '\'' + ", password='"
+        return "User{" + "id=" + id + ", email='" + email + '\''  + ", phone='" + phone + '\'' + ", username='" + username + '\'' + ", password='"
                 + password + '\'' + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", active="
                 + active + ", roles=" + roles + ", isEmailVerified=" + isEmailVerified + '}';
     }

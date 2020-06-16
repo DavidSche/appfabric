@@ -1,6 +1,8 @@
 package com.davidche.appfabric.uaa.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Column;
@@ -14,7 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import java.time.Instant;
 
-@Data
+@Setter
+@Getter
 @Entity(name = "PASSWORD_RESET_TOKEN")
 public class PasswordResetToken {
 
