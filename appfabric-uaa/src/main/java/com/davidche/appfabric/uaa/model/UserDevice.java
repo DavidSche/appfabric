@@ -2,6 +2,7 @@ package com.davidche.appfabric.uaa.model;
 
 import com.davidche.appfabric.uaa.model.audit.DateAudit;
 import com.davidche.appfabric.uaa.model.token.RefreshToken;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+@Data
 @Entity(name = "USER_DEVICE")
 public class UserDevice extends DateAudit {
 
@@ -58,59 +60,4 @@ public class UserDevice extends DateAudit {
         this.isRefreshActive = isRefreshActive;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public DeviceType getDeviceType() {
-        return deviceType;
-    }
-
-    public void setDeviceType(DeviceType deviceType) {
-        this.deviceType = deviceType;
-    }
-
-    public String getNotificationToken() {
-        return notificationToken;
-    }
-
-    public void setNotificationToken(String notificationToken) {
-        this.notificationToken = notificationToken;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public RefreshToken getRefreshToken() {
-        return refreshToken;
-    }
-
-    public void setRefreshToken(RefreshToken refreshToken) {
-        this.refreshToken = refreshToken;
-    }
-
-    public Boolean getRefreshActive() {
-        return isRefreshActive;
-    }
-
-    public void setRefreshActive(Boolean refreshActive) {
-        isRefreshActive = refreshActive;
-    }
 }

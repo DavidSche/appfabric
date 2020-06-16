@@ -1,5 +1,6 @@
 package com.davidche.appfabric.uaa.model;
 
+import lombok.Data;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import java.time.Instant;
 
+@Data
 @Entity(name = "PASSWORD_RESET_TOKEN")
 public class PasswordResetToken {
 
@@ -41,30 +43,6 @@ public class PasswordResetToken {
     }
 
     public PasswordResetToken() {
-    }
-
-    public Instant getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(Instant expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
 }

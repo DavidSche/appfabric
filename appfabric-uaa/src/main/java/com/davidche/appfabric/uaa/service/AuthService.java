@@ -125,7 +125,7 @@ public class AuthService {
                 .orElseThrow(() -> new ResourceNotFoundException("Token", "Email verification", emailToken));
 
         User registeredUser = emailVerificationToken.getUser();
-        if (registeredUser.getEmailVerified()) {
+        if (registeredUser.getIsEmailVerified()) {
             log.info("User [" + emailToken + "] already registered.");
             log.info(localeMessage.getMessage("USER_REGISTERED"),emailToken );
             //String welcome = messageSource.getMessage("welcome",null,locale);
@@ -151,7 +151,7 @@ public class AuthService {
         EmailVerificationToken emailVerificationToken = emailVerificationTokenService.findByToken(existingToken)
                 .orElseThrow(() -> new ResourceNotFoundException("Token", "Existing email verification", existingToken));
 
-        if (emailVerificationToken.getUser().getEmailVerified()) {
+        if (emailVerificationToken.getUser().getIsEmailVerified()) {
             return Optional.empty();
         }
         return Optional.ofNullable(emailVerificationTokenService.updateExistingTokenWithNameAndExpiry(emailVerificationToken));

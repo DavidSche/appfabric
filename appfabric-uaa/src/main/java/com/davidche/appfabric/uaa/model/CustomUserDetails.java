@@ -1,5 +1,6 @@
 package com.davidche.appfabric.uaa.model;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,7 +56,7 @@ public class CustomUserDetails extends User implements UserDetails {
     //是否启用
     @Override
     public boolean isEnabled() {
-        return super.getEmailVerified();
+        return super.getIsEmailVerified();
     }
 
     @Override

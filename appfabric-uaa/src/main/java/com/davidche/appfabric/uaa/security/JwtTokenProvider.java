@@ -1,6 +1,7 @@
 package com.davidche.appfabric.uaa.security;
 
 import com.davidche.appfabric.uaa.exception.InvalidTokenRequestException;
+import com.davidche.appfabric.uaa.log.MyLoggable;
 import com.davidche.appfabric.uaa.model.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -19,6 +20,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 
+@MyLoggable
 @Slf4j
 @Component
 public class JwtTokenProvider {
