@@ -1,6 +1,63 @@
+app:
+    jwt:
+        claims:
+            refresh:
+                name: Refresh
+        expiration: 900000
+        header: Authorization
+        header.prefix: 'Bearer '
+        secret: mySecret
+    token:
+        email:
+            verification:
+                duration: 3600000
+        password:
+            reset:
+                duration: 3600000
+        refresh:
+            duration: 2592000000
+    velocity:
+        templates:
+            location: /templates/
+#
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: INFO
+#
 server:
-    port: 8080
+    port: 9004
+#
+spring:
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        initialization-mode: always
+        password: root
+        testWhileIdle: true
+        url: jdbc:mysql://192.168.9.26:3306/login_db
+        username: root
+        validationQuery: SELECT 1
+    jackson:
+        serialization:
+            WRITE_DATES_AS_TIMESTAMPS: false
+        time-zone: UTC
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+                format_sql: true
+    messages:
+        basename: i18n/messages
+        cache-seconds: 3600
+#
+springdoc:
+    api-docs:
+        path: /api/api-docs
 
-
-
-
+management:
+    endpoint:
+        health:
+            show-details: always

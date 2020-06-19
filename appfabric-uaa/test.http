@@ -29,7 +29,7 @@ Content-Type: application/json
 {
   "email": "che_shuai@massclouds.com",
   "phone": "130666666666",
-  "password": "123456",
+  "password": "654321",
   "deviceInfo": {
     "deviceId": "htc",
     "deviceType": "DEVICE_TYPE_ANDROID"
@@ -71,7 +71,7 @@ Content-Type: application/json
 {
   "email": "che_shuai@massclouds.com",
   "phone": "13066026666",
-  "password": "123456",
+  "password": "654321",
   "deviceInfo": {
     "deviceId": "htc",
     "deviceType": "DEVICE_TYPE_ANDROID",
@@ -79,6 +79,8 @@ Content-Type: application/json
 
   }
 }
+
+> {% client.global.set("auth_token", response.body.accessToken); client.global.set("refresh_token", response.body.refreshToken); %}
 
 ### 使用令牌登录成功
 GET {{host}}/api/user/me
@@ -91,7 +93,7 @@ POST {{host}}/api/auth/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "abbcfac6-6410-4c47-bdf7-9dbb1d38687f"
+  "refreshToken": "{{refresh_token}}"
 }
 
 ### 刷新当前用户的token
@@ -129,3 +131,7 @@ Cookie: JSESSIONID=C2E7D6491E6A9CCD57BFCC7F57493536
 token=3D74afd7f7-2772-422c-93=b1-8ffbe82fc721"
 
 ###
+
+### 刷新当前用户的token
+GET {{host}}/actuator/health
+Authorization: Bearer  {{auth_token}}
