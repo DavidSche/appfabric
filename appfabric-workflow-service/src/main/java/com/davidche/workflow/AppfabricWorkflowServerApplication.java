@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableProcessApplication("appfabric-workflow-server")
-public class CamundaWorkflowApplication {
+public class AppfabricWorkflowServerApplication {
     public static void main(String... args) {
-        SpringApplication.run(CamundaWorkflowApplication.class, args);
+        SpringApplication.run(AppfabricWorkflowServerApplication.class, args);
     }
 }

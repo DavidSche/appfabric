@@ -21,6 +21,10 @@ camunda:
       firstName: Demo
     filter:
       create: All tasks
+    # web application setting
+    webapp:
+      application-path: '/'
+
 # Spring-data-jap:setting
 spring:
   jpa:
@@ -29,6 +33,9 @@ spring:
       hbm2ddl.auto: create
     show-sql: true
     generate-ddl: true
+
+  jersey:
+    application-path: '/rest'
 
 # port
 server.port: 8080
@@ -42,5 +49,5 @@ domain:
     password: postgres
     configuration.maximum-pool-size: 30
 
-camunda.bpm.webapp.application-path: '/'
-spring.jersey.application-path: '/rest'
+#camunda.bpm.webapp.application-path: '/'
+#spring.jersey.application-path: '/rest'
