@@ -1,6 +1,6 @@
 package com.davidche.workflow.common.user;
 
-import com.davidche.workflow.config.BeanUtil;
+import com.davidche.workflow.util.BeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.camunda.bpm.engine.IdentityService;

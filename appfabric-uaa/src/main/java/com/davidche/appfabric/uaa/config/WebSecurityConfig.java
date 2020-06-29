@@ -23,7 +23,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Profile("!dev")
 @Configuration
 @EnableWebSecurity(debug = true)
-@EnableJpaRepositories(basePackages = "com.davidche.appfabric.uaa.repository")
 @EnableGlobalMethodSecurity(
         securedEnabled = true,
         jsr250Enabled = true,

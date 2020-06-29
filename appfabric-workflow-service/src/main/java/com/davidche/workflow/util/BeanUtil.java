@@ -1,4 +1,4 @@
-package com.davidche.workflow.config;
+package com.davidche.workflow.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
