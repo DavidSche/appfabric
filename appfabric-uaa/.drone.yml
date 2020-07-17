@@ -32,12 +32,17 @@ steps:
       event:
       - push
       - tag
-# build
+# build  maven 参数
+  # -U:该参数能强制让Maven检查所有SNAPSHOT依赖更新，确保集成基于最新的状态，如果没有该参数，Maven默认以天为单位检查更新，而持续集成的频率应该比这高很多。
+  #
+  #-e:如果构建出现异常，该参数能让Maven打印完整的stack trace，以方便分析错误原因。
+  #
+  #-B:该参数表示让Maven使用批处理模式构建项目，能够避免一些需要人工参与交互而造成的挂起状态
   - name: build
     image: 192.168.9.10:5000/maven:3-jdk-8
     commands:
 #       - mvn install -DskipTests=true -Dmaven.repo.local=/.m2/repository -Dmaven.javadoc.skip=true -B -V
-      - mvn install checkstyle:checkstyle -DskipTests=true -Dmaven.repo.local=./.m2/repository -Dmaven.javadoc.skip=true -B -V
+      - mvn install -DskipTests=true -Dmaven.repo.local=./.m2/repository -Dmaven.javadoc.skip=true -B -V
 #    volumes:
 #       - name: cache2
 #         path: /.m2
